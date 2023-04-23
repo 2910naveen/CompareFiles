@@ -28,7 +28,7 @@ function App() {
   //     }
   // };
 
-  
+
   // const compareFiles = () =>{
   //      var newOriginalFileArray = [];
   //      var newComparedFileArray = [];
@@ -63,14 +63,15 @@ function App() {
 
   const handleChange = async (e) =>
   {
-      e.preventDefault()
-      const reader = new FileReader()
+      e.preventDefault();
+      const reader = new FileReader();
       var text = '';
       var fileName = e.target.name;
       reader.onload = async (e) => { 
                                     text = (e.target.result);
                                     const allLines = text.split(/\r\n|\n/);
                                     var newFilesContent = {...filesContent};
+                                    newFilesContent[fileName] = [];
                                     allLines.forEach((line)=>
                                     newFilesContent[fileName].push(line));
                                     setFilesContent(newFilesContent);
